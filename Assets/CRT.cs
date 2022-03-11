@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CRT : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+[RequireComponent(typeof(Camera))]
+public class CRT : MonoBehaviour {
+    public Shader crtShader;
+
+    private Material crtMat;
+
+    void Start() {
+        crtMat ??= new Material(crtShader);
+        crtMat.hideFlags = HideFlags.HideAndDontSave;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void OnRenderImage(RenderTexture source, RenderTexture destination) {
+        Graphics.Blit(source, destination, crtMat);
     }
 }
