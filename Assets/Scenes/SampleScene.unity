@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
+  - component: {fileID: 963194230}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -223,3 +224,17 @@ MonoBehaviour:
   crtShader: {fileID: 4800000, guid: 7eeee7c9ca2d5f24db3e0a066ac98fb5, type: 3}
   image: {fileID: 2800000, guid: 6d650c960cc780344a1797058f0e4433, type: 3}
   useImage: 1
+  curvature: 10
+--- !u!114 &963194230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f62f1e7307b2f7f4a87ab70b3b3dac75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 2800000, guid: 8bc0273abf28ca34cb461a3476fa5b1f, type: 3}
