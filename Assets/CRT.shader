@@ -39,6 +39,10 @@ Shader "Hidden/CRT" {
 
                 fixed4 col = tex2D(_MainTex, uv);
                 
+                if (uv.x < 0.0f || 1.0f < uv.x || uv.y < 0.0f || 1.0f < uv.y) {
+                    col = 0;
+                }
+                
                 return col;
             }
             ENDCG
