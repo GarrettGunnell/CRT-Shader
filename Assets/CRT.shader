@@ -30,10 +30,11 @@ Shader "Hidden/CRT" {
             }
 
             sampler2D _MainTex;
+            float _Curvature;
 
             fixed4 fp(v2f i) : SV_Target {
                 float2 uv = i.uv * 2.0f - 1.0f;
-                float2 offset = uv.yx / 2.0f;
+                float2 offset = uv.yx / _Curvature;
                 uv = uv + uv * offset * offset;
                 uv = uv * 0.5f + 0.5f;
 

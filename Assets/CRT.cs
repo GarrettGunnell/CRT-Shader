@@ -8,6 +8,9 @@ public class CRT : MonoBehaviour {
     public Texture image;
     public bool useImage = true;
 
+    [Range(1.0f, 10.0f)]
+    public float curvature = 1.0f;
+
     private Material crtMat;
 
     void Start() {
@@ -16,6 +19,7 @@ public class CRT : MonoBehaviour {
     }
 
     void OnRenderImage(RenderTexture source, RenderTexture destination) {
+        crtMat.SetFloat("_Curvature", curvature);
         Graphics.Blit(useImage ? image : source, destination, crtMat);
     }
 }
