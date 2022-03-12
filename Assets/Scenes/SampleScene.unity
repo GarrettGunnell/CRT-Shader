@@ -221,3 +221,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crtShader: {fileID: 4800000, guid: 7eeee7c9ca2d5f24db3e0a066ac98fb5, type: 3}
+  image: {fileID: 2800000, guid: 6d650c960cc780344a1797058f0e4433, type: 3}
+  useImage: 1

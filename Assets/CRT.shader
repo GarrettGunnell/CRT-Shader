@@ -32,9 +32,14 @@ Shader "Hidden/CRT" {
             sampler2D _MainTex;
 
             fixed4 fp(v2f i) : SV_Target {
-                fixed4 col = tex2D(_MainTex, i.uv);
+                float2 uv = i.uv * 2.0f - 1.0f;
+                float2 offset = uv.yx / 2.0f;
+                uv = uv + uv * offset * offset;
+                uv = uv * 0.5f + 0.5f;
 
-                return 1 - col;
+                fixed4 col = tex2D(_MainTex, uv);
+                
+                return col;
             }
             ENDCG
         }
