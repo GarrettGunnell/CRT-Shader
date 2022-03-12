@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Camera))]
 public class CRT : MonoBehaviour {
     public Shader crtShader;
+    public Texture image;
+    public bool useImage = true;
 
     private Material crtMat;
 
@@ -14,6 +16,6 @@ public class CRT : MonoBehaviour {
     }
 
     void OnRenderImage(RenderTexture source, RenderTexture destination) {
-        Graphics.Blit(source, destination, crtMat);
+        Graphics.Blit(useImage ? image : source, destination, crtMat);
     }
 }
