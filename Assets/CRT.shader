@@ -52,11 +52,10 @@ Shader "Hidden/CRT" {
 
                 float crtLine = (sin(i.uv.y * _ScreenParams.y * 2.0f) + 1.0f);
 
-                col.g *= crtLine * 0.16f + 1.0f;
+                col.g *= crtLine * 0.15f + 1.0f;
                 col.rb *= crtLine * 0.135f + 1.0f; 
 
-                col = saturate(col);
-                return col * vignette.x * vignette.y;
+                return saturate(col) * vignette.x * vignette.y;
             }
             ENDCG
         }
