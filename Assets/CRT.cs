@@ -11,6 +11,9 @@ public class CRT : MonoBehaviour {
     [Range(1.0f, 10.0f)]
     public float curvature = 1.0f;
 
+    [Range(1.0f, 100.0f)]
+    public float vignetteWidth = 30.0f;
+
     private Material crtMat;
 
     void Start() {
@@ -20,6 +23,7 @@ public class CRT : MonoBehaviour {
 
     void OnRenderImage(RenderTexture source, RenderTexture destination) {
         crtMat.SetFloat("_Curvature", curvature);
+        crtMat.SetFloat("_VignetteWidth", vignetteWidth);
         Graphics.Blit(useImage ? image : source, destination, crtMat);
     }
 }

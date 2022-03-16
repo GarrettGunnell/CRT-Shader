@@ -31,6 +31,7 @@ Shader "Hidden/CRT" {
 
             sampler2D _MainTex;
             float _Curvature;
+            float _VignetteWidth;
 
             fixed4 fp(v2f i) : SV_Target {
                 float2 uv = i.uv * 2.0f - 1.0f;
@@ -40,11 +41,15 @@ Shader "Hidden/CRT" {
 
                 fixed4 col = tex2D(_MainTex, uv);
                 
-                if (uv.x < 0.0f || 1.0f < uv.x || uv.y < 0.0f || 1.0f < uv.y) {
+                if (uv.x <= 0.0f || 1.0f <= uv.x || uv.y <= 0.0f || 1.0f <= uv.y)
                     col = 0;
-                }
                 
-                return col;
+                uv = uv * 2.0f - 1.0f;
+                float2 vignette = _VignetteWidth / _ScreenParams.xy;
+                vignette = smoothstep(0.0f, vignette, 1.0f - abs(uv));
+                vignette = saturate(vignette);
+
+                return col * vignette.x * vignette.y;
             }
             ENDCG
         }

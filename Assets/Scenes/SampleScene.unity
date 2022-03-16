@@ -225,6 +225,7 @@ MonoBehaviour:
   image: {fileID: 2800000, guid: 6d650c960cc780344a1797058f0e4433, type: 3}
   useImage: 1
   curvature: 10
+  vignetteWidth: 30
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,7 +233,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f62f1e7307b2f7f4a87ab70b3b3dac75, type: 3}
   m_Name: 
