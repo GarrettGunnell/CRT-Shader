@@ -50,10 +50,10 @@ Shader "Hidden/CRT" {
                 vignette = smoothstep(0.0f, vignette, 1.0f - abs(uv));
                 vignette = saturate(vignette);
 
-                float crtLine = (sin(i.uv.y * _ScreenParams.y * 2.0f) + 1.0f) / 2.0f;
-                crtLine += 0.5f;
+                float crtLine = (sin(i.uv.y * _ScreenParams.y * 2.0f) + 1.0f);
 
-                col *= crtLine;
+                col.g *= crtLine * 0.16f + 1.0f;
+                col.rb *= crtLine * 0.135f + 1.0f; 
 
                 col = saturate(col);
                 return col * vignette.x * vignette.y;
