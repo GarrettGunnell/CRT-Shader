@@ -10,8 +10,6 @@ Shader "Hidden/CRT" {
             #pragma vertex vp
             #pragma fragment fp
 
-            #define PI 3.141592653589793238462f
-
             #include "UnityCG.cginc"
 
             struct VertexData {
@@ -50,10 +48,8 @@ Shader "Hidden/CRT" {
                 vignette = smoothstep(0.0f, vignette, 1.0f - abs(uv));
                 vignette = saturate(vignette);
 
-                float crtLine = (sin(i.uv.y * _ScreenParams.y * 2.0f) + 1.0f);
-
-                col.g *= crtLine * 0.15f + 1.0f;
-                col.rb *= crtLine * 0.135f + 1.0f; 
+                col.g *= (sin(i.uv.y * _ScreenParams.y * 2.0f) + 1.0f) * 0.15f + 1.0f;
+                col.rb *= (cos(i.uv.y * _ScreenParams.y * 2.0f) + 1.0f) * 0.135f + 1.0f; 
 
                 return saturate(col) * vignette.x * vignette.y;
             }
