@@ -42,7 +42,7 @@ Shader "Hidden/CRT" {
                 fixed4 col = tex2D(_MainTex, uv);
                 if (uv.x <= 0.0f || 1.0f <= uv.x || uv.y <= 0.0f || 1.0f <= uv.y)
                     col = 0;
-                
+
                 uv = uv * 2.0f - 1.0f;
                 float2 vignette = _VignetteWidth / _ScreenParams.xy;
                 vignette = smoothstep(0.0f, vignette, 1.0f - abs(uv));

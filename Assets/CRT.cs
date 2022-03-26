@@ -26,4 +26,20 @@ public class CRT : MonoBehaviour {
         crtMat.SetFloat("_VignetteWidth", vignetteWidth);
         Graphics.Blit(useImage ? image : source, destination, crtMat);
     }
+
+    private void LateUpdate() {
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            RenderTexture rt = new RenderTexture(1920, 1080, 24);
+            GetComponent<Camera>().targetTexture = rt;
+            Texture2D screenshot = new Texture2D(1920, 1080, TextureFormat.RGB24, false);
+            GetComponent<Camera>().Render();
+            RenderTexture.active = rt;
+            screenshot.ReadPixels(new Rect(0, 0, 1920, 1080), 0, 0);
+            GetComponent<Camera>().targetTexture = null;
+            RenderTexture.active = null;
+            Destroy(rt);
+            string filename = string.Format("{0}/../Recordings/snap_{1}.png", Application.dataPath, System.DateTime.Now.ToString("HH-mm-ss"));
+            System.IO.File.WriteAllBytes(filename, screenshot.EncodeToPNG());
+        }
+    }
 }
